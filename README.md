@@ -2,13 +2,13 @@
 Administrador de contraseña (Password Manager). Herramienta CRUD de contraseñas implementando criptografía en los archivos.
 ## Antes de usar (Primer uso)
 Ejecuta el archivo init.py para crear una contraseña de acceso y crear la llave encargada de encriptar y desencriptar los demas archivos (la contraseña de acceso y la información almacenada). Este archivo encriptará los datos creados y se eliminará a sí mismo automaticamente despues de completar su funcion.\
-Si ejecuta el programa principal antes del archivo init.py, el programa no funcionará correctamente.
+Si ejecuta el programa principal (**Password Manager.py**) antes del archivo init.py, el programa no funcionará correctamente.
 ## Manual de uso
 - El programa cuenta con 4 funciones: Leer, Guardar, Borrar y Salir.
 - Al abrir el programa se desencriptarán los datos para poder trabajar con los archivos .key y bd.csv
 - La información se guardará en el archivo bd.csv
 - Para leer, guardar y/o borrar, el programa pedirá una contraseña, la cual habremos creado al momento de ejcutar el archivo init.py.
-- La opcion **Borrar** te guiará para borrar columna por columna individualmente. Para borrar toda la base de dato (el archivo csv), borrelo desde su carpeta 
+- La opcion **Borrar** te guiará para borrar columna por columna individualmente a partir de su indice. Para borrar toda la base de dato completa, borrelo desde su carpeta (el archivo csv)
 - Al seleccionar la opcion salir, toda la informacion dentro de los archivos creados se encriptarán y volverán a ser desencriptados cuando vuelva a abrir el programa.
 ## Funciones no visibles
 Dentro del programa existen funciones NO visibles para cualquier usuario, de modo que solo el desarrollador, administrador y/o quien conozcoa de ellas podrán acceder.

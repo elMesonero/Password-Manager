@@ -5,6 +5,7 @@ from cryptography.fernet import Fernet
 
 ### Funcion para guardar información. 
 def guardar():
+    print("Ingrese los datos a guardar\n")
     plataforma = input("Plataforma: ")
     correo = input("Correo o Usuario: ")
     clave = input("Clave: ")

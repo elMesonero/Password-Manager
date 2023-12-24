@@ -6,7 +6,7 @@ from cryptography.fernet import Fernet
 ## Este archivo se eliminará ya que solo sera usado para generar una contraseña inicial.
 def generar_llave():
     print('''Antes de comenzar deberá crear una contraseña. Mas adelante podrá cambiarla.
-Recomendamos leer la documentación para salir de dudas.''')
+Recomendamos leer la documentación para salir de dudas.\n''')
     time.sleep(3)
     nueva_contraseña = input("Ingrese una contraseña: ")
     with open("password.key","w") as archivo:
@@ -31,11 +31,35 @@ Recomendamos leer la documentación para salir de dudas.''')
         
     print("Llave creada")
 
+def encriptar():
+    csv = "bd.csv"
+    key = "password.key"
+
+    ## Bucle para encriptar el archivo .csv y el archivo .key
+    for i in csv, key:
+        ## Guarda la llave con la clave encriptada en la variable "key"
+        with open(f'filekey.key', 'rb') as filekey:
+            key = filekey.read()
+            
+        ## Declara la variable con el valor de la llave a usar
+        fernet = Fernet(key)
+
+        ## Abre el archivo original
+        with open(f'{i}','rb') as file:
+            original = file.read()
+
+        ## Encripta el archivo original (encripta la información)
+        encriptado = fernet.encrypt(original)
+            
+        ## Abre el archivo en modo escritura y sobrescribe con los datos encriptados
+        with open(f'{i}', 'wb') as archivo_encriptado:
+            archivo_encriptado.write(encriptado)
+
 if os.name == "posix":
    borrar = "rm init.py"       
 elif os.name == "ce" or os.name == "nt" or os.name == "dos":
    borrar = "del init.py"
 
 generar_llave()
+encriptar()
 os.system(borrar)
-
