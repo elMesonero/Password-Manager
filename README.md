@@ -13,7 +13,7 @@ Administrador de contraseña (Password Manager). Herramienta CRUD de contraseña
 - La opcion **Borrar** te guiará para borrar columna por columna individualmente a partir de su indice. Para borrar toda la base de dato completa, borrelo desde su carpeta (el archivo csv)
 - Al seleccionar la opcion salir, toda la informacion dentro de los archivos creados se encriptarán y volverán a ser desencriptados cuando vuelva a abrir el programa.
 ## Funciones no visibles
-Dentro del programa existen funciones NO visibles para cualquier usuario, de modo que solo el desarrollador, administrador y/o quien conozcoa de ellas podrán acceder.
+Dentro del programa existen funciones NO visibles para cualquier usuario, de modo que solo el desarrollador, administrador y/o quien conozca de ellas podrán acceder.
 - Restablecer la contraseña de acceso: Se accede despues de fallar la contraseña. Al momento de preguntar "¿Olvidaste la contraseña?" deberás poner un punto (.) para acceder a la opcion de restablecer contraseña.
 # Aviso
 Guarde el programa y todos los archivos creados en un lugar seguro donde nadie los mueva. Y evite moverlos, ya que:
