@@ -4,6 +4,7 @@ Administrador de contraseña (Password Manager). Herramienta CRUD de contraseña
 Ejecuta el archivo init.py para crear una contraseña de acceso y crear la llave encargada de encriptar y desencriptar los demas archivos (la contraseña de acceso y la información almacenada). Este archivo encriptará los datos creados y se eliminará a sí mismo automaticamente despues de completar su funcion.\
 Si ejecuta el programa principal (**Password Manager.py**) antes del archivo init.py, el programa no funcionará correctamente.
 ## Manual de uso
+- Antes que nada, tener en cuenta que para que el programa funcione debe de tener instalado previamente los modulos de **pandas**, **getpass**, **cryptography**
 - El programa cuenta con 4 funciones: Leer, Guardar, Borrar y Salir.
 - Al abrir el programa se desencriptarán los datos para poder trabajar con los archivos .key y bd.csv
 - La información se guardará en el archivo bd.csv
