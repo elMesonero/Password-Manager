@@ -62,21 +62,25 @@ def verificacion():
     opcion = input("1. Si\n2. No\nNumero: ")
     
     ## Opcion no mostrada en pantalla por seguridad. 
+    ## Solo la conocera el desarrollador/administrador de las contraseñas
     if opcion == ".":
         os.system(limpiar)
         
-        ## Solo la conocera el desarrollador/administrador de las contraseñas
         nueva_contraseña = input("Ingrese nueva contraseña: ")
         with open("password.key","w") as archivo:
             archivo.write(nueva_contraseña)
             
         os.system(limpiar)
         print("Contraseña restablecia")
-            
+        os.sleep(3)
+        
         menu()
         
     elif opcion == "1":
+        os.system(limpiar)
         print("Contacte con el desarrollador")
+        time.sleep(3)
+        
         menu()
         
     elif opcion == "2":
@@ -85,14 +89,14 @@ def verificacion():
     
     else:
         ## Si no ingresa un numero valido, mostrara mensaje de error y volvera a repetir la funcion
-        print("Error.. Ingrese un numero: ")
+        print("\nError.. Ingrese un numero: ")
         verificacion()
 
 ### Función para borar fila teniendo como referencia el indice solicitado
 def borrar():
     ## getpass() no muestra la contraseña al momento de escribirla
     contraseña = getpass("Ingrese contraseña: ")
-    with open("python/modules/proyectos/Password Manager/password.key","r") as password:
+    with open("password.key","r") as password:
         password = password.read()
         
     if contraseña == password:
@@ -101,7 +105,7 @@ def borrar():
         os.system(limpiar)
         
         ## Muestra las plataformas que existen actualmente dentro del archivo
-        df = pd.read_csv("python/modules/proyectos/Password Manager/bd_prueba.csv", names=["Plataforma","Correo/Usuario","Clave"])
+        df = pd.read_csv("bd.csv", names=["Plataforma","Correo/Usuario","Clave"])
         df_loc = df["Plataforma"]
         clean = df_loc.drop_duplicates()
         print(clean.to_string(index=False))
@@ -109,7 +113,7 @@ def borrar():
         ## Muestra los datos/credenciales de la plataforma consultada
         df_plat = input("\nIngrese plataforma a consultar: ")
         print("\n")
-        df_del = pd.read_csv("python/modules/proyectos/Password Manager/bd_prueba.csv")
+        df_del = pd.read_csv("bd.csv")
         df_pf = df_del[df_del["Plataforma"] == df_plat.capitalize()]
         print(df_pf)
         
@@ -117,8 +121,7 @@ def borrar():
         df_reset = df_del.reset_index(drop=True) # Formatea el indice de cada columna
         columna = int(input("Ingrese el indice de la columna a eliminar: "))
         df_reset.drop([columna], axis=0, inplace=True)
-        df_reset.to_csv("python/modules/proyectos/Password Manager/bd_prueba.csv",index=False)
-        print(df_reset)
+        df_reset.to_csv("bd.csv",index=False)
         
         menu()
         
@@ -128,16 +131,7 @@ def borrar():
         time.sleep(3)
         verificacion()
         
-        
-### Genera una clave encriptada para usarla como llave para encriptar y desencriptar los archivos
-def generar_llave():
-    key = Fernet.generate_key()
-
-    ## Guardamos la clave encriptada dentro de un archivo .key para usarla como llave
-    with open('filekey.key', 'wb') as filekey:
-        filekey.write(key)
-    
-### Funcion para encriptar un archivo deseado
+### Funcion para encriptar el archivo .csv y el archivo .key
 def encriptar():
     csv = "bd.csv"
     key = "password.key"
@@ -162,7 +156,7 @@ def encriptar():
         with open(f'{i}', 'wb') as archivo_encriptado:
             archivo_encriptado.write(encriptado)
     
-### Funcion para desencriptar un archivo deseado
+### Funcion para encriptar el archivo .csv y el archivo .key
 def desencriptar():
     csv = "bd.csv"
     key = "password.key"
@@ -217,21 +211,4 @@ if os.name == "posix":
 elif os.name == "ce" or os.name == "nt" or os.name == "dos":
    limpiar = "cls"
 
-borrar()
-
-
-#-crear y guardar la información - Listo
-#-Clave para acceder/leer informacion - Listo
-#-Editar contraseña para leer informacion al momento de olvidar contraseña - Listo
-#-Encriptar contraseña para leer información
-# Funcion borrar columna - Aun no funcional
-#-encriptar la clave
-#-encriptar el archivo csv donde se guarda
-#-Funcion buscar por plataforma y/o correo-usuario
-# Definir mejor la variables para que el codigo sea mas legible y comprensible
-# Verificar si los archivos bd.csv y password.key existen
-# mostrar clave en csv con tkinter o menu en consola
-# Crear archivo/modulo aparte para generar llave y que sea autoborrable (se borre a si mismo despues de generar la llave)
-# Mejorar la documentación y lectura del código 
-
-# Ruta por emergencia: python/modules/proyectos/Password Manager/
+desencriptar()
