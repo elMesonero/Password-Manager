@@ -159,28 +159,33 @@ def encriptar():
     
 ### Funcion para encriptar el archivo .csv y el archivo .key
 def desencriptar():
-    csv = "bd.csv"
-    key = "password.key"
+    try:
+        csv = "bd.csv"
+        key = "password.key"
 
-    ## Bucle para desencriptar el archivo .csv y el archivo .key
-    for i in csv, key:
-        ## Guarda la llave con la clave encriptada en la variable "key"
-        with open('filekey.key', 'rb') as filekey:
-            key = filekey.read()
-        
-        ## Declara la variable con el valor de la llave a usar
-        fernet = Fernet(key)
+        ## Bucle para desencriptar el archivo .csv y el archivo .key
+        for i in csv, key:
+            ## Guarda la llave con la clave encriptada en la variable "key"
+            with open('filekey.key', 'rb') as filekey:
+                key = filekey.read()
+            
+            ## Declara la variable con el valor de la llave a usar
+            fernet = Fernet(key)
 
-        ## Abre el archivo encriptado
-        with open(f'{i}', 'rb') as file:
-            encriptado = file.read()
+            ## Abre el archivo encriptado
+            with open(f'{i}', 'rb') as file:
+                encriptado = file.read()
 
-        ## Desencripta el archivo encriptado
-        desencriptado = fernet.decrypt(encriptado)
+            ## Desencripta el archivo encriptado
+            desencriptado = fernet.decrypt(encriptado)
 
-        ## Abre el archivo en modo escritura y sobrescribe con los datos desencriptados
-        with open(f'{i}','wb') as file:
-            file.write(desencriptado)
+            ## Abre el archivo en modo escritura y sobrescribe con los datos desencriptados
+            with open(f'{i}','wb') as file:
+                file.write(desencriptado)
+    except:
+        print('''***Los archivos no se encontraban encriptados***
+***Procure cerra el programa de manera correcta para mayor seguridad***''')
+        pass
     
     menu()
 
