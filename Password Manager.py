@@ -73,7 +73,7 @@ def verificacion():
             
         os.system(limpiar)
         print("Contraseña restablecia")
-        os.sleep(3)
+        time.sleep(3)
         
         menu()
         
