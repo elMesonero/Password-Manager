@@ -1,7 +1,8 @@
 # Descripción
 Administrador de contraseña (Password Manager). Herramienta CRUD de contraseñas implementando criptografía en los archivos.
 ## Antes de usar (Primer uso)
-- Antes que nada, tener en cuenta que para que el programa funcione debe de tener instalado previamente los modulos de **pandas**, **getpass**, **cryptography**
+- Instalar las dependencias necesarias
+    >pip install -r requirements.txt
 - Ejecuta el archivo init.py para crear una contraseña de acceso y crear la llave encargada de encriptar y desencriptar los demas archivos (la contraseña de acceso y la información almacenada). 
 - Este archivo encriptará los datos creados y se eliminará a sí mismo automaticamente despues de completar su funcion.
 - **Nota:** Si ejecuta el programa principal (**Password Manager.py**) antes del archivo init.py, el programa no funcionará correctamente.
