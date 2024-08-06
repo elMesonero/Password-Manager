@@ -200,21 +200,27 @@ def menu():
     if var == "1":
         os.system(limpiar)
         leer()
+
     elif var == "2":
         os.system(limpiar)
         guardar()
+
     elif var == "3":
         borrar()
+
     elif var == "4":
         os.system(limpiar)
         encriptar()
+
     else:
         print("***Error.. Ingrese un numero valido***")
         menu()
 
-if os.name == "posix":
-   limpiar = "clear"       
-elif os.name == "ce" or os.name == "nt" or os.name == "dos":
-   limpiar = "cls"
+if __name__ == '__main__':
+    if os.name == "posix":
+        limpiar = "clear"  
 
-desencriptar()
+    elif os.name == "ce" or os.name == "nt" or os.name == "dos":
+        limpiar = "cls"
+
+    desencriptar()
